@@ -1,3 +1,3 @@
 #  TFL v1
 
-### The TFL App using Hand-made Data Structures & Algorithms.
+The TFL App using Hand-made Data Structures & Algorithms.
