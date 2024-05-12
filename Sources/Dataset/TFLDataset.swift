@@ -12,9 +12,9 @@ struct TFLDataset {
     
     static var trainTimes: [TrainTimeInfo] = []
     
+    static let url = URL(string: "https://raw.githubusercontent.com/mdsahilak/TFL_Data/main/tfl_data.json")!
+    
     static func loadData() {
-        let url = URL(string: "https://raw.githubusercontent.com/mdsahilak/TFL_Data/main/tfl_data.json")!
-        
         do {
             let data = try Data(contentsOf: url)
             
