@@ -12,6 +12,10 @@ struct TFLDataset {
     
     static var trainTimes: [TrainTimeInfo] = []
     
+    // Local File URL
+    // static let url = URL(fileURLWithPath: "/Users/sahil/Desktop/Westminster/DSA_CW/TFL/TFL.json")!
+    
+    // Hosted File URL
     static let url = URL(string: "https://raw.githubusercontent.com/mdsahilak/TFL_Data/main/tfl_data.json")!
     
     static func loadData() {
