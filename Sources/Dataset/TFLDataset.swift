@@ -40,6 +40,5 @@ struct TFLDataset {
         } catch {
             print(error)
         }
-        
     }
 }
