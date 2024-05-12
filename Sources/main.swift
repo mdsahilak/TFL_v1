@@ -16,9 +16,33 @@ print("Hello, world!")
 //let (distance, path) = graph.findShortestPath(from: "A", to: "E")
 
 TFLDataset.loadData()
-let graph = Graph(adjacencyList: TFLDataset.stationsInformation)
 
-//print(graph.adjacencyList)
-
-let (distance, path) = graph.findShortestPath(from: "Marble Arch", to: "Bank")
-//print(TFLData.stationsInf ormation)
+while true {
+    let graph = Graph(adjacencyList: TFLDataset.stationsInformation)
+    
+    print("Please choose an option:")
+    print("1: Find Route between two stations:")
+    print("2: Exit")
+    
+    guard let input = readLine(), let option = Int(input) else {
+        print("Invalid Input")
+        exit(0)
+    }
+    
+    switch option {
+    case 1:
+        print("Please enter starting station:")
+        let station1 = readLine() ?? ""
+        
+        print("Please enter destination station:")
+        let station2 = readLine() ?? ""
+        
+        let (_) = graph.findShortestPath(from: station1, to: station2)
+    case 2:
+        print("Thank you.")
+        exit(0)
+    default:
+        print("Please choose a valid option.")
+        exit(0)
+    }
+}
