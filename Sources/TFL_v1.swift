@@ -91,7 +91,7 @@ struct TFL_v1 {
         if let path = graph.findShortestPath(from: station1, to: station2) {
             TFLNetwork.showTravelJourney(for: path)
         } else {
-            displayPathFindError()
+            print("Error: Could not find a path between the given stations!")
         }
     }
     
@@ -102,19 +102,4 @@ struct TFL_v1 {
         TFLNetwork.showInformation(for: station)
     }
     
-    // MARK: Helpers
-    static func displayPathFindError() {
-        print("Error: Could not find a path between the given stations!")
-    }
-    
-    static func showcasePathFindingAlgorithm() {
-        let graph = Graph(adjacencyList: TFLNetwork.tubeMap)
-        let path = graph.findShortestPath(from: "Marble Arch", to: "Great Portland Street")
-        
-        if let path {
-            TFLNetwork.showTravelJourney(for: path)
-        } else {
-            displayPathFindError()
-        }
-    }
 }
