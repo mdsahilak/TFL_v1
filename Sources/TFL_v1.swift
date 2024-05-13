@@ -6,7 +6,7 @@ import Foundation
 @main
 struct TFL_v1 {
     static func main() {
-        print("Welcome to the DSA - TFL v1 Application")
+        print("Welcome to the TFL v1 Application")
 
         TFLDataset.loadData()
 

@@ -8,18 +8,28 @@
 import Foundation
 
 struct PriorityQueue<T> {
-    private var elements: [(T, Double)] = []
+    struct QEntry {
+        let element: T
+        let priority: Double
+    }
+    
+    private var entries: [QEntry] = []
 
     mutating func enqueue(_ element: T, priority: Double) {
-        elements.append((element, priority))
-        elements.sort { $0.1 < $1.1 }
+        entries.append(.init(element: element, priority: priority))
+        entries.sort { $0.priority < $1.priority }
     }
 
     mutating func dequeue() -> (element: T, priority: Double)? {
-        return elements.isEmpty ? nil : elements.removeFirst()
+        if entries.isEmpty {
+            return nil
+        } else {
+            let val = entries.removeFirst()
+            return (val.element, val.priority)
+        }
     }
 
     var isEmpty: Bool {
-        return elements.isEmpty
+        return entries.isEmpty
     }
 }
