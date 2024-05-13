@@ -11,8 +11,13 @@ struct Edge {
     let destination: String
     let weight: Double
     
-    init(_ destination: String, _ weight: Double) {
+    let line: String
+    let direction: String
+    
+    init(_ destination: String, _ weight: Double, line: String, direction: String) {
         self.destination = destination
         self.weight = weight
+        self.line = line
+        self.direction = direction
     }
 }

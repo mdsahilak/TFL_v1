@@ -7,9 +7,12 @@ print("Welcome to the DSA - TFL v1 Application")
 
 TFLDataset.loadData()
 
+let graph = Graph(adjacencyList: TFLDataset.tubeNetwork)
+//let (distance, path) = graph.findShortestPath(from: "Marble Arch", to: "Great Portland Street")
+
+//TFLDataset.showTravelJourney(for: path)
+
 while true {
-    let graph = Graph(adjacencyList: TFLDataset.stationsInformation)
-    
     print("Please choose an option:")
     print("1: Find Route between two stations:")
     print("2: Exit")
@@ -27,7 +30,8 @@ while true {
         print("Please enter destination station:")
         let station2 = readLine() ?? ""
         
-        let (_) = graph.findShortestPath(from: station1, to: station2)
+        let (_, path) = graph.findShortestPath(from: station1, to: station2)
+        TFLDataset.showTravelJourney(for: path)
     case 2:
         print("Thank you.")
         exit(0)

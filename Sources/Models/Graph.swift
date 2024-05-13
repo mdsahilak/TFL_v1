@@ -54,7 +54,7 @@ struct Graph {
             var fullPath = destination
             
             while let previous = paths[current], previous != "" {
-                fullPath = "\(previous) -> \(fullPath)"
+                fullPath = "\(previous)->\(fullPath)"
                 current = previous
             }
             
@@ -73,11 +73,15 @@ struct Graph {
 //        print("Shortest distances from node \(vertexA): \(distances)")
 //        print("Shortest paths from node \(vertexB): \(paths)")
         
-        let distance = distances[end] ?? Double.greatestFiniteMagnitude
-        let path = paths[end] ?? "-"
+        let distance = distances[end]
+        let path = paths[end]
         
-        print("Shortest Path from \(start) to \(end) is | \(path) | Time: \(distance) mins")
+//        if let distance, let path {
+//            print("Shortest Path from \(start) to \(end) is | \(path) | Time: \(distance) mins")
+//        } else {
+//            print("Error: Could not find a route between these stations!")
+//        }
         
-        return (distance, path)
+        return (distance ?? 0.0, path ?? "")
     }
 }
