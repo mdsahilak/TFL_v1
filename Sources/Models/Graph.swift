@@ -65,8 +65,8 @@ struct Graph {
     }
     
     func findShortestPath(from vertexA: String, to vertexB: String) -> String? {
-        let start = vertexA.uppercased()
-        let end = vertexB.uppercased()
+        let start = vertexA.capitalized
+        let end = vertexB.capitalized
         
         let (_, paths) = self.dijkstra(startVertex: start)
         

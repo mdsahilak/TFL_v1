@@ -67,15 +67,15 @@ struct TFLDataset {
     }
     
     static func showInformation(for station: String) {
-        if let edges = tubeNetwork[station.uppercased()] {
-            print("Name: \t\(station)")
+        if let edges = tubeNetwork[station.capitalized] {
+            print("Name: \(station)")
             
             let lines: Set<String> = Set(edges.map { $0.line.trimmingCharacters(in: .whitespacesAndNewlines) })
-            print("Lines: \t\(lines)")
+            print("Lines: \n \(lines)")
             
-            print("Connections: ")
+            print("Nearby Stations: ")
             for edge in edges {
-                print("\t\(edge.description)")
+                print(" \(edge.description)")
             }
         } else {
             print("ERROR: No Information Found!")
@@ -90,6 +90,8 @@ struct TFLDataset {
         return edge
     }
     
-    static func showDividerLine() { print("-----------------------------------------------------------------------") }
+    static func showDividerLine() {
+        print("-----------------------------------------------------------------------")
+    }
 }
 

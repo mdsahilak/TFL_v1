@@ -14,7 +14,7 @@ struct Edge: CustomStringConvertible {
     let line: String
     let direction: String
     
-    var description: String { "\(line.capitalized.trimmingCharacters(in: .whitespacesAndNewlines)) (\(direction.capitalized)) to \(destination) - \(weight) mins" }
+    var description: String { "\(destination) - \(line.capitalized.trimmingCharacters(in: .whitespacesAndNewlines)) (\(direction.capitalized)) - \(weight) mins" }
     
     init(_ destination: String, _ weight: Double, line: String, direction: String) {
         self.destination = destination

@@ -72,7 +72,7 @@ struct TFL_v1 {
     
     static func showInformationAboutStation() {
         print("Please enter the station name: ")
-        let station = "Bank" //readLine() ?? ""
+        let station = readLine() ?? ""
         
         TFLDataset.showInformation(for: station)
     }
