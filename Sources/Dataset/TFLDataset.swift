@@ -16,7 +16,7 @@ struct TFLDataset {
     // Hosted File URL
     static let url = URL(string: "https://raw.githubusercontent.com/mdsahilak/TFL_Data/main/tfl_data.json")!
     
-    static func loadData() {
+    static func fetchInformation() {
         do {
             let data = try Data(contentsOf: url)
             
@@ -42,6 +42,10 @@ struct TFLDataset {
         let stations: [String] = path.components(separatedBy: "->")
         var totalTime: Double = 0.0
         
+        showDividerLine()
+        print("Tube Journey from \(stations.first ?? "-") to \(stations.last ?? "-")")
+        showDividerLine()
+        
         for i in 0..<stations.count - 1 {
             let station = stations[i]
             let nextStation = stations[i+1]
@@ -57,7 +61,25 @@ struct TFLDataset {
             }
         }
         
+        showDividerLine()
         print("Total Journey Time: \(totalTime) mins")
+        showDividerLine()
+    }
+    
+    static func showInformation(for station: String) {
+        if let edges = tubeNetwork[station.uppercased()] {
+            print("Name: \t\(station)")
+            
+            let lines: Set<String> = Set(edges.map { $0.line.trimmingCharacters(in: .whitespacesAndNewlines) })
+            print("Lines: \t\(lines)")
+            
+            print("Connections: ")
+            for edge in edges {
+                print("\t\(edge.description)")
+            }
+        } else {
+            print("ERROR: No Information Found!")
+        }
     }
     
     static func getEdge(from a: String, to b: String) -> Edge? {
@@ -67,5 +89,7 @@ struct TFLDataset {
         
         return edge
     }
+    
+    static func showDividerLine() { print("-----------------------------------------------------------------------") }
 }
 
