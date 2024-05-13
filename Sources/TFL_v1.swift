@@ -8,7 +8,7 @@ struct TFL_v1 {
     static func main() {
         print("Welcome to the TFL v1 Application")
 
-        TFLDataset.fetchInformation()
+        TFLNetwork.fetchInformation()
         
         while true {
             showHomeMenu()
@@ -60,10 +60,10 @@ struct TFL_v1 {
         print("Please enter destination station: ")
         let station2 = readLine() ?? ""
         
-        let graph = Graph(adjacencyList: TFLDataset.tubeNetwork)
+        let graph = Graph(adjacencyList: TFLNetwork.tubeMap)
         
         if let path = graph.findShortestPath(from: station1, to: station2) {
-            TFLDataset.showTravelJourney(for: path)
+            TFLNetwork.showTravelJourney(for: path)
         } else {
             displayPathFindError()
             exit(0)
@@ -74,7 +74,7 @@ struct TFL_v1 {
         print("Please enter the station name: ")
         let station = readLine() ?? ""
         
-        TFLDataset.showInformation(for: station)
+        TFLNetwork.showInformation(for: station)
     }
     
     // MARK: Helpers
@@ -83,11 +83,11 @@ struct TFL_v1 {
     }
     
     static func showcasePathFindingAlgorithm() {
-        let graph = Graph(adjacencyList: TFLDataset.tubeNetwork)
+        let graph = Graph(adjacencyList: TFLNetwork.tubeMap)
         let path = graph.findShortestPath(from: "Marble Arch", to: "Great Portland Street")
         
         if let path {
-            TFLDataset.showTravelJourney(for: path)
+            TFLNetwork.showTravelJourney(for: path)
         } else {
             displayPathFindError()
             exit(0)
