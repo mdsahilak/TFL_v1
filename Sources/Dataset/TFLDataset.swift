@@ -69,18 +69,3 @@ struct TFLDataset {
     }
 }
 
-struct Route {
-    private var station: String
-    private var edge: Edge
-    
-    var startStation: String { station }
-    var endStation: String { edge.destination }
-    var line: String { edge.line }
-    var direction: String { edge.direction }
-    var runningTime: Double { edge.weight }
-    
-    init(station: String, edge: Edge) {
-        self.station = station
-        self.edge = edge
-    }
-}
