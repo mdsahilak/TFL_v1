@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Priority Queue backed by an array as storage
 struct PriorityQueue<T> {
     struct QEntry {
         let element: T
