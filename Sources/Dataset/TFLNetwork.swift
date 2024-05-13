@@ -10,6 +10,9 @@ import Foundation
 struct TFLNetwork {
     static var tubeMap: [String: [Edge]] = [:]
     
+    static var delayedTrackSections: [TrackSectionInfo] = []
+    static var closedTrackSections: [TrackSectionInfo] = []
+    
     // Local File URL
     // static let url = URL(fileURLWithPath: "/Users/sahil/Desktop/Westminster/DSA_CW/TFL/TFL.json")!
     
@@ -79,6 +82,40 @@ struct TFLNetwork {
             }
         } else {
             print("ERROR: No Information Found!")
+        }
+    }
+    
+    static func addDelay(_ track: TrackSectionInfo) {
+        delayedTrackSections.append(track)
+    }
+    
+    static func removeDelay(_ track: TrackSectionInfo) {
+        if let index = delayedTrackSections.firstIndex(of: track) {
+            delayedTrackSections.remove(at: index)
+        }
+    }
+    
+    static func closeSection(_ track: TrackSectionInfo) {
+        closedTrackSections.append(track)
+    }
+    
+    static func openSection(_ track: TrackSectionInfo) {
+        if let index = closedTrackSections.firstIndex(of: track) {
+            closedTrackSections.remove(at: index)
+        }
+    }
+    
+    static func showDelayedSections() {
+        print("Delayed Track Sections: ")
+        for track in delayedTrackSections {
+            print(track.description)
+        }
+    }
+    
+    static func showClosedSections() {
+        print("Closed Track Sections: ")
+        for track in closedTrackSections {
+            print(track.description)
         }
     }
     
